@@ -1,16 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Peter Simeth's basic flask pretty youtube downloader (v1.3)
-https://github.com/petersimeth/basic-flask-template
-© MIT licensed, 2018-2023
-"""
 import os
 from flask_minify  import Minify
 from flask import Flask, render_template
 
 from config import config_dict
-from apps import create_app
+from app import create_app
 
 # DEVELOPMENT_ENV = True
 

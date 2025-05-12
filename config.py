@@ -1,8 +1,3 @@
-# -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 import os
 from pathlib import Path
 
@@ -77,7 +72,7 @@ class Config(object):
     #     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
     # DYNAMIC_DATATB = {
-    #     "products": "apps.models.Product"
+    #     "products": "app.models.Product"
     # }
 
     # CDN_DOMAIN = os.getenv('CDN_DOMAIN')
