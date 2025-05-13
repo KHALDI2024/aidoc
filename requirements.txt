@@ -18,8 +18,9 @@ opencv-python
 pytesseract
 pdf2image
 scipy
+# another OCR
+easyocr
 
 matplotlib
 pandas
 
-easyocr
