@@ -1,24 +1,204 @@
-الذكاء االضطناعئ: أو الذكاء الصناعي: أو الذكاغ
+MODÈLE FOURNI PAR
+j_— Satappä
+base o lu
 
-الصطنعية! هو سلوك وخصائص معينة تتسم بها البرامج
+LES ARTISANS TRAVAUX DU BÂTIMENT
 
-الحاسوبية فتحاكي القدرات الذهنية البشرية وأنماط عملها. ومن
-أهم هذه الخصائص: القدرة على التعلم واالستنتاجء ورد
+SARL NEUF ET RENOVATION
 
-الفعل على حاالت لم تبرمج في اآللة إال أنه مصطلح جدلي؟ لعدم
-بأنه: نكاة ثبديه اآلالت والبرامج بما يحاكي القدرات الذهنية
-البشرية وأنماط عملها مثل: القدرة على التعلم واالستنتاجء ورد
-الفعل على حاالت لم تبرمج في اآللة وبه تصنغ حواسيب وبرامج
-قادرة على اتخاذ سلوك بشري.
-الذكاء االضطناعئ: أو الذكاء الصناعي: أو الذكاغ
+Nom du client
 
-الصطنعية! هو سلوك وخصائص معينة تتسم بها البرامج
+AVOIR Adresse du client
 
-الحاسوبية فتحاكي القدرات الذهنية البشرية وأنماط عملها. ومن
-أهم هذه الخصائص: القدرة على التعلم واالستنتاجء ورد
+Code postal et ville du client
+Numéro : AV50
 
-الفعل على حاالت لم تبرمج في اآللة إال أنه مصطلح جدلي؟ لعدم
-بأنه: نكاة ثبديه اآلالت والبرامج بما يحاكي القدرات الذهنية
-البشرية وأنماط عملها مثل: القدرة على التعلم واالستنتاجء ورد
-الفعل على حاالت لم تبرمج في اآللة وبه تصنغ حواسيب وبرامج
-قادرة على اتخاذ سلوك بشري.
+Date : 10/06/2024 N° TVA du client
+
+Avoir sur facture n°24 , émise le 14/04/24
+
+Objet : Exemple de chantier et de prestation
+
+Libellé Total HT _ % tva Total TTC
+D‘après le Devis N°254 du 11/02/24
+
+Exemple de travaux 400,00 € 80,00 € 480,00 €
+Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
+Exemple de travaux 40,00 € 240,00 €
+
+Adresse de chantier : Total HT
+Nom du client
+Adresse du chantier TVA à 10%
+Code postal + Ville TVA à 20%
+
+Total TVA
+Date d‘échéance : 25/06/24 Net à déduire
+Mode de règlement : Par chèque
+
+Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
+s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
+
+lci toutes vos coordonnées légales
+Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
+capital social, code APE, type d‘entreprise
+
+batapplifr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+
+Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
+
+@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
+
+MODÈLE FOURNI PAR
+j_— Satappä
+base o lu
+
+LES ARTISANS TRAVAUX DU BÂTIMENT
+
+SARL NEUF ET RENOVATION
+
+Nom du client
+
+AVOIR Adresse du client
+
+Code postal et ville du client
+Numéro : AV50
+
+Date : 10/06/2024 N° TVA du client
+
+Avoir sur facture n°24 , émise le 14/04/24
+
+Objet : Exemple de chantier et de prestation
+
+Libellé Total HT _ % tva Total TTC
+D‘après le Devis N°254 du 11/02/24
+
+Exemple de travaux 400,00 € 80,00 € 480,00 €
+Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
+Exemple de travaux 40,00 € 240,00 €
+
+Adresse de chantier : Total HT
+Nom du client
+Adresse du chantier TVA à 10%
+Code postal + Ville TVA à 20%
+
+Total TVA
+Date d‘échéance : 25/06/24 Net à déduire
+Mode de règlement : Par chèque
+
+Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
+s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
+
+lci toutes vos coordonnées légales
+Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
+capital social, code APE, type d‘entreprise
+
+batapplifr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+
+Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
+
+@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
+
+MODÈLE FOURNI PAR
+j_— Satappä
+base o lu
+
+LES ARTISANS TRAVAUX DU BÂTIMENT
+
+SARL NEUF ET RENOVATION
+
+Nom du client
+
+AVOIR Adresse du client
+
+Code postal et ville du client
+Numéro : AV50
+
+Date : 10/06/2024 N° TVA du client
+
+Avoir sur facture n°24 , émise le 14/04/24
+
+Objet : Exemple de chantier et de prestation
+
+Libellé Total HT _ % tva Total TTC
+D‘après le Devis N°254 du 11/02/24
+
+Exemple de travaux 400,00 € 80,00 € 480,00 €
+Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
+Exemple de travaux 40,00 € 240,00 €
+
+Adresse de chantier : Total HT
+Nom du client
+Adresse du chantier TVA à 10%
+Code postal + Ville TVA à 20%
+
+Total TVA
+Date d‘échéance : 25/06/24 Net à déduire
+Mode de règlement : Par chèque
+
+Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
+s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
+
+lci toutes vos coordonnées légales
+Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
+capital social, code APE, type d‘entreprise
+
+batapplifr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+
+Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
+
+@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
+
+MODÈLE FOURNI PAR
+j_— Satappä
+base o lu
+
+LES ARTISANS TRAVAUX DU BÂTIMENT
+
+SARL NEUF ET RENOVATION
+
+Nom du client
+
+AVOIR Adresse du client
+
+Code postal et ville du client
+Numéro : AV50
+
+Date : 10/06/2024 N° TVA du client
+
+Avoir sur facture n°24 , émise le 14/04/24
+
+Objet : Exemple de chantier et de prestation
+
+Libellé Total HT _ % tva Total TTC
+D‘après le Devis N°254 du 11/02/24
+
+Exemple de travaux 400,00 € 80,00 € 480,00 €
+Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
+Exemple de travaux 40,00 € 240,00 €
+
+Adresse de chantier : Total HT
+Nom du client
+Adresse du chantier TVA à 10%
+Code postal + Ville TVA à 20%
+
+Total TVA
+Date d‘échéance : 25/06/24 Net à déduire
+Mode de règlement : Par chèque
+
+Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
+s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
+
+lci toutes vos coordonnées légales
+Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
+capital social, code APE, type d‘entreprise
+
+batapplifr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+
+Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
+
+@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
+
