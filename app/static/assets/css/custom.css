@@ -1,0 +1,37 @@
+.sidebar-content.js-simplebar {
+    box-shadow: 0 0 2rem 0 rgba(33, 37, 41, .1);
+}
+
+.sidebar,
+.sidebar-content,
+.sidebar-link,
+a.sidebar-link {
+    background: #ffffff;
+}
+
+.sidebar-item.active .sidebar-link:hover,
+.sidebar-item.active>.sidebar-link {
+    border-left-color: #0052de;
+    color: #0052de;
+    background: #0052de17;
+}
+.sidebar-item.active .sidebar-link:hover i, .sidebar-item.active .sidebar-link:hover svg, .sidebar-item.active>.sidebar-link i, .sidebar-item.active>.sidebar-link svg {
+    color: #0052de;
+}
+.sidebar-link,
+a.sidebar-link {
+    color: var(--bs-body-color);
+}
+
+.sidebar-link:hover {
+    background: #0052de17;
+    color: var(--bs-body-color);
+}
+
+.sidebar-link i,
+.sidebar-link svg,
+a.sidebar-link i,
+a.sidebar-link svg,
+.sidebar-link:hover, .sidebar-link:hover i, .sidebar-link:hover svg {
+    color: var(--bs-body-color);
+}
