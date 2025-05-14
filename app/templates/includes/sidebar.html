@@ -111,41 +111,41 @@
                 <!-- Sidebar -->
   <nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand text-center" href="index.html">
+				<a class="sidebar-brand text-center" href="{{ url_for('home_blueprint.index') }}">
             <img class="w-50" src="{{ url_for('static', filename='assets/img/brand/logo.png') }}" alt="logo" /> 
         </a>
 
 				<ul class="sidebar-nav">
-					<li class="sidebar-header">
+					{# <li class="sidebar-header">
 						Pages
-					</li>
+					</li> #}
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="index.html">
+					<li class="sidebar-item {% if 'index' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.index') }}">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
+					<li class="sidebar-item {% if 'profile' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.profile') }}">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.signin') }}">
               <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.signup') }}">
               <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-blank.html">
+					<li class="sidebar-item {% if 'blank' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.blank') }}">
               <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
             </a>
 					</li>
@@ -154,32 +154,32 @@
 						Tools & Components
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
+					<li class="sidebar-item {% if 'uibuttons' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.uibuttons') }}">
               <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
+					<li class="sidebar-item {% if 'uiforms' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.uiforms') }}">
               <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
+					<li class="sidebar-item {% if 'uicards' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.uicards') }}">
               <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
+					<li class="sidebar-item {% if 'uitypography' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.uitypography') }}">
               <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
+					<li class="sidebar-item {% if 'icons' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.icons') }}">
               <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
             </a>
 					</li>
@@ -188,14 +188,14 @@
 						Plugins & Addons
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
+					<li class="sidebar-item {% if 'charts' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.charts') }}">
               <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
+					<li class="sidebar-item {% if 'maps' in segment %} active {% endif %}">
+						<a class="sidebar-link" href="{{ url_for('home_blueprint.maps') }}">
               <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
             </a>
 					</li>
