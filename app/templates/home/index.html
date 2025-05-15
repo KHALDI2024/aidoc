@@ -2,100 +2,40 @@
 
 {% block title %} <strong>Analytics</strong> Dashboard {% endblock %}
 
+<!-- Specific Page JS goes HERE  -->
+{% block stylesheets %}
+<link href="https://releases.transloadit.com/uppy/v4.15.0/uppy.min.css" rel="stylesheet" />
+<script src="https://releases.transloadit.com/uppy/locales/v3.3.1/fr_FR.min.js"></script>
+{% endblock stylesheets %}
 {% block content %}
 
 <div class="container-fluid p-0">
-
-    <div class="flex flex-col justify-center gap-5 mr-4 ml-4"><span class="ant-upload-wrapper 
-            mt-8
-            text-gray-90
-            group">
-            <div class="css-1yafjae ant-upload ant-upload-drag"><span class="ant-upload ant-upload-btn"><input
-                        name="file" type="file" accept=".png,.jpeg,.jpg,.bmp,.tiff,.tif,.pdf" style="display: none;">
-                    <div class="ant-upload-drag-container">
-                        <div class="flex flex-col items-center justify-center">
-                            <div class="flex items-center justify-center"><span class="text-ds-xxl font-bold">Upload New
-                                    File</span><svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 group-hover:text-[#4D61FC]">
-                                    <g clip-path="url(#clip0_4958_3048)">
-                                        <path d="M10.5 11.8125V2.625" stroke="currentColor" stroke-width="2.5"
-                                            stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M17.7188 11.8125V17.0625H3.28125V11.8125" stroke="currentColor"
-                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M7.21875 5.90625L10.5 2.625L13.7812 5.90625" stroke="currentColor"
-                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_4958_3048">
-                                            <rect width="21" height="21" fill="white"></rect>
-                                        </clipPath>
-                                    </defs>
-                                </svg></div>
-                        </div>
-                    </div>
-                </span></div>
-        </span>
-        <div class="">
-            <p class="font-light mb-3 mt-2">Don’t have a document? Try one of our samples.</p>
-            <div class="flex flex-wrap items-center gap-2 w-auto md:w-[520px]"><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>Invoice</span></button><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>Contract</span></button><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>Bank Statement</span></button><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>W2</span></button><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>Expense</span></button><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>Payslip</span></button><button type="button"
-                    class="ant-btn css-1yafjae ant-btn-default ant-btn-color-default ant-btn-variant-outlined !text-primary text-ds-sm rounded-none"><span
-                        class="ant-btn-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4.66683 5.83268L9.3335 5.83268M4.66683 10.4993H9.3335M4.66683 8.16602H7.00016M9.3335 1.16602V3.14935C9.3335 3.34265 9.4902 3.49935 9.6835 3.49935H11.6668M2.3335 1.51602V12.4827C2.3335 12.676 2.4902 12.8327 2.6835 12.8327H11.3168C11.5101 12.8327 11.6668 12.676 11.6668 12.4827V3.35266C11.6668 3.25983 11.63 3.17081 11.5643 3.10517L9.72767 1.26853C9.66204 1.20289 9.57301 1.16602 9.48019 1.16602H2.6835C2.4902 1.16602 2.3335 1.32272 2.3335 1.51602Z"
-                                stroke="#4D61FC" stroke-width="0.875" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg></span><span>US Driver License</span></button></div>
-        </div>
-    </div>
+    <noscript>This app requires JavaScript.</noscript>
+    <div id="files-drag-drop" class="d-flex justify-content-center mb-5"></div>
 </div>
 
 {% endblock %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{#<script src="{{ url_for('static', filename='assets/js/upload_file.js')}}" type="module"></script>#}
+
+<script type="module">
+    import { Uppy, Dashboard, XHRUpload } from "https://releases.transloadit.com/uppy/v4.15.0/uppy.min.mjs"
+  const uppy = new Uppy({
+		debug: true,
+		locale: Uppy.locales.fr_FR,
+	});
+  uppy.use(Dashboard, { target: '#files-drag-drop', inline: true })
+    uppy.use(XHRUpload, {
+    endpoint: 'http://127.0.0.1:5000/upload',  // This is your Flask route
+    fieldName: 'file',                         // This matches request.files.getlist('file')
+    formData: true,
+    bundle: true                               // Sends multiple files in one request
+  })
+
+  // Optional: handle upload success/failure
+  uppy.on('complete', (result) => {
+    console.log('Upload complete! We’ve uploaded these files:', result.successful)
+  })
+</script>
+{% endblock javascripts %}
