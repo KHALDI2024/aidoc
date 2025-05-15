@@ -35,3 +35,13 @@ a.sidebar-link svg,
 .sidebar-link:hover, .sidebar-link:hover i, .sidebar-link:hover svg {
     color: var(--bs-body-color);
 }
+
+
+/* UPLOAD FILE */
+#files-drag-drop .uppy-Dashboard-inner {
+    background-color: #fff;
+    border: 1px solid #0052de;
+}
+#files-drag-drop [data-uppy-drag-drop-supported=true] .uppy-Dashboard-AddFiles {
+    border: 3px dashed #dfdfdf;
+}
