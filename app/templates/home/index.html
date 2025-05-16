@@ -9,48 +9,207 @@
 
 {% block content %}
 <div class="container-fluid p-0">
-  <div class="mb-3">
-    <h1 class="h3 d-inline align-middle">Dashboard</h1>
-    <!-- <span class="badge bg-dark text-white ms-2">
+    <div class="mb-3">
+        <h1 class="h3 d-inline align-middle">Dashboard</h1>
+        <!-- <span class="badge bg-dark text-white ms-2">
       Get more page examples
     </span> -->
-  </div>
+    </div>
 
-  <div class="card">
-    <div class="card-body">
-      <i class="align-middle me-2 float-start feather-lg" data-feather="info"></i> <span class="align-middle"></span>
-      <p class="text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum
-        rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam
-        quam nunc, blandit
-        vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
-        tempus. Donec vitae sapien ut libero.</p>
-      <ul>
-        <li>
-          Lorem ipsum dolor sit amet
-        </li>
-        <li>
-          Consectetur adipiscing elit
-        </li>
-        <li>
-          Nulla volutpat aliquam velit
-        </li>
-        <li>
-          Phasellus iaculis neque
-        </li>
-        <li>
-          Eget porttitor lorem
-        </li>
-      </ul>
+    <div class="card">
+        <div class="card-body">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    {#<h5 class="card-title my-2">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                Accordion
+                            </a>
+                        </h5>#}
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="align-middle me-2 float-start feather-lg" data-feather="info"></i>
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p class="text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum
+                                rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam
+                                quam nunc, blandit
+                                vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
+                                tempus. Donec vitae sapien ut libero.</p>
+                            <ul>
+                                <li>
+                                    Lorem ipsum dolor sit amet
+                                </li>
+                                <li>
+                                    Consectetur adipiscing elit
+                                </li>
+                                <li>
+                                    Nulla volutpat aliquam velit
+                                </li>
+                                <li>
+                                    Phasellus iaculis neque
+                                </li>
+                                <li>
+                                    Eget porttitor lorem
+                                </li>
+                            </ul>
+                            <button class="btn btn-square btn-primary btn-lg">Get started</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Coloured text</h5>
-      <noscript>This app requires JavaScript.</noscript>
-      <div id="files-drag-drop" class="d-flex justify-content-center my-4"></div>
-      <button class="btn btn-success btn-lg float-end">Success</button>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coloured text</h5>
+            <noscript>This app requires JavaScript.</noscript>
+            <div id="files-drag-drop" class="d-flex justify-content-center my-4"></div>
+            <div class="float-end">
+                <div class="spinner-border spinner-border-sm text-success me-2" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <button class="btn btn-square btn-success btn-lg">Success</button>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="text-center p-2">
+                <div class="spinner-border text-dark me-2" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="alert-message">
+                    <strong>Hello there!</strong> A simple success alert—check it out!
+                </div>
+            </div>
+            <h5 class="card-title">Basic Table</h5>
+            <h6 class="card-subtitle text-muted">Using the most basic table markup, here’s how .table-based tables look
+                in Bootstrap.
+            </h6>
+        </div>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th style="width:40%;">Name</th>
+                    <th style="width:25%">Phone Number</th>
+                    <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vanessa Tucker</td>
+                    <td>864-348-0485</td>
+                    <td class="d-none d-md-table-cell">June 21, 1961</td>
+                    <td class="table-action">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trash align-middle">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>William Harris</td>
+                    <td>914-939-2458</td>
+                    <td class="d-none d-md-table-cell">May 15, 1948</td>
+                    <td class="table-action">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trash align-middle">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sharon Lessman</td>
+                    <td>704-993-5435</td>
+                    <td class="d-none d-md-table-cell">September 14, 1965</td>
+                    <td class="table-action">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trash align-middle">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Christina Mason</td>
+                    <td>765-382-8195</td>
+                    <td class="d-none d-md-table-cell">April 2, 1971</td>
+                    <td class="table-action">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trash align-middle">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Robin Schneiders</td>
+                    <td>202-672-1407</td>
+                    <td class="d-none d-md-table-cell">October 12, 1966</td>
+                    <td class="table-action">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-trash align-middle">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                </path>
+                            </svg></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock %}
@@ -59,7 +218,7 @@
 <!-- {#<script src="{{ url_for('static', filename='assets/js/upload_file.js')}}" type="module"></script>#} -->
 
 <script type="module">
-  import { Uppy, Dashboard, XHRUpload } from "https://releases.transloadit.com/uppy/v4.15.0/uppy.min.mjs"
+    import { Uppy, Dashboard, XHRUpload } from "https://releases.transloadit.com/uppy/v4.15.0/uppy.min.mjs"
   import { frLocale } from "/static/assets/js/fr_FR.min.js";
 
   const uppy = new Uppy({
