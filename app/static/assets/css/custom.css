@@ -1,3 +1,7 @@
+.sidebar-brand img {
+    width: 120px;
+    max-width: 100%;
+}
 .sidebar-content.js-simplebar {
   box-shadow: 0 0 2rem 0 rgba(33, 37, 41, 0.1);
 }
@@ -58,4 +62,11 @@ a.sidebar-link svg,
   display: block;
   width: 60px;
   margin: auto;
+}
+
+/* TABS */
+.tab .nav-tabs .nav-item {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    text-align: center;
 }
