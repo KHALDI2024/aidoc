@@ -1,0 +1,15 @@
+{% macro file_icon(ext) %}
+    {% if ext in ['.pdf'] %}
+        <i class="fa-solid fa-file-pdf fa-xl" style="color: #d9534f;"></i>
+    {% elif ext in ['.jpg', '.jpeg', '.png', '.gif'] %}
+       <i class="fa-solid fa-file-image fa-xl" style="color: #5bc0de;"></i>
+    {% elif ext in ['.doc', '.docx'] %}
+        <i class="fa-solid fa-file-word fa-xl" style="color: #337ab7;"></i>  {# Blue for Word docs #}
+    {% elif ext in ['.xls', '.xlsx'] %}
+        <i class="fa-solid fa-file-excel fa-xl" style="color: #5cb85c;"></i>  {# Green for Excel #}
+    {% elif ext in ['.txt'] %}
+        <i class="fa-solid fa-file-lines fa-xl" style="color: #f0ad4e;"></i>  {# Orange for text #}
+    {% else %}
+        <i class="fa-solid fa-file fa-xl" style="color: #6c757d;"></i>  {# Gray for unknown types #}
+    {% endif %}
+{% endmacro %}
