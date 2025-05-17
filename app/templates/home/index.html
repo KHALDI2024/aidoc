@@ -1,6 +1,7 @@
 {% extends 'layouts/base.html' %}
+{% import '_macros.html' as macros %}
 
-{% block title %} Dashboard {% endblock %}
+{% block title %} Tableau de bord {% endblock %}
 
 <!-- Specific Page JS goes HERE  -->
 {% block stylesheets %}
@@ -8,208 +9,168 @@
 {% endblock stylesheets %}
 
 {% block content %}
-<div class="container-fluid p-0">
-    <div class="mb-3">
-        <h1 class="h3 d-inline align-middle">Dashboard</h1>
-        <!-- <span class="badge bg-dark text-white ms-2">
+<div class="container-fluid p-0" id="dashboard">
+  <div class="mb-3">
+    <h1 class="h3 d-inline align-middle">Tableau de bord</h1>
+    <!-- <span class="badge bg-dark text-white ms-2">
       Get more page examples
     </span> -->
-    </div>
+  </div>
 
-    <div class="card">
-        <div class="card-body">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    {#<h5 class="card-title my-2">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                aria-controls="collapseOne">
-                                Accordion
-                            </a>
-                        </h5>#}
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <i class="align-middle me-2 float-start feather-lg" data-feather="info"></i>
-                            Accordion Item #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <p class="text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum
-                                rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam
-                                quam nunc, blandit
-                                vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
-                                tempus. Donec vitae sapien ut libero.</p>
-                            <ul>
-                                <li>
-                                    Lorem ipsum dolor sit amet
-                                </li>
-                                <li>
-                                    Consectetur adipiscing elit
-                                </li>
-                                <li>
-                                    Nulla volutpat aliquam velit
-                                </li>
-                                <li>
-                                    Phasellus iaculis neque
-                                </li>
-                                <li>
-                                    Eget porttitor lorem
-                                </li>
-                            </ul>
-                            <button class="btn btn-square btn-primary btn-lg">Get started</button>
+  <div class="card">
+    <div class="">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button text-black" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fa-solid fa-circle-info fa-lg me-2 float-start"></i> Introducing Ai Doc Plateforme
+            </button>
+          </h2>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="text-muted">Etiam rhoncus. Maecenas tempus, tellus eget condimentum
+                rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam
+                quam nunc, blandit
+                vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
+                tempus. Donec vitae sapien ut libero.</p>
+              <ul>
+                <li>
+                  Lorem ipsum dolor sit amet
+                </li>
+                <li>
+                  Consectetur adipiscing elit
+                </li>
+                <li>
+                  Nulla volutpat aliquam velit
+                </li>
+                <li>
+                  Phasellus iaculis neque
+                </li>
+                <li>
+                  Eget porttitor lorem
+                </li>
+              </ul>
+              <a href="#upload_file" class="btn btn-primary btn-lg">Get started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body" id="upload_file">
+      <h5 class="card-title">Upload image or PDF file (.png,.jpg,.jpeg or .PDF)</h5>
+      <form>
+        <div class="tab">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab"
+                role="tab" aria-selected="true">Home</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab"
+                aria-selected="false" tabindex="-1">Profile</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-1" role="tabpanel">
+              <noscript>This app requires JavaScript.</noscript>
+              <div id="files-drag-drop" class="d-flex justify-content-center my-4"></div>
+            </div>
+            <div class="tab-pane" id="tab-2" role="tabpanel">
+              <input type="hidden" id="selected_existing_file" name="existing_file" />
+              <table class="table table-responsive">
 
-                        </div>
-                    </div>
-                </div>
+                <thead>
+                  <tr>
+                    <th style="width:40%;">Nom du fichier</th>
+                    <th style="width:25%">Taille (MB)</th>
+                    <th class="d-none d-md-table-cell" style="width:25%">Extension</th>
+                    <th>Aperçu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for file in files %}
+                  <tr>
+                    <td>{{ macros.file_icon(file.extension) }} <a
+                        href="{{ url_for('home_blueprint.preview_file', filename=file.name) }}"
+                        target="_blank">{{file.name}}</a></td>
+                    <td>{{file.size}}</td>
+                    <td class="d-none d-md-table-cell">{{file.extension}}</td>
+                    <td class="table-action">
+                      <a href="{{ url_for('home_blueprint.preview_file', filename=file) }}" target="_blank"><i
+                          class="align-middle me-2" data-feather="eye"></i></a>
+                      <button class="btn btn-sm btn-outline-primary select-file-btn" data-filename="{{ file.name }}">
+                        <i class="align-middle me-1" data-feather="check-circle"></i> Choisir
+                      </button>
+                    </td>
+                  </tr>
+                  {% else %}
+                  <tr>
+                    <td colspan="2">Aucun fichier trouvé.</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Coloured text</h5>
-            <noscript>This app requires JavaScript.</noscript>
-            <div id="files-drag-drop" class="d-flex justify-content-center my-4"></div>
-            <div class="float-end">
-                <div class="spinner-border spinner-border-sm text-success me-2" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                <button class="btn btn-square btn-success btn-lg">Success</button>
-            </div>
+
+        <div class="mb-3 row">
+          <label class="col-form-label col-sm-2 text-sm-end">Langues</label>
+          <div class="col-sm-4">
+            <select class="form-control mb-3">
+              <option selected="" value="eng">Anglais</option>
+              <option value="ara">Arabe</option>
+              <option value="fra">Français</option>
+            </select>
+          </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <div class="text-center p-2">
-                <div class="spinner-border text-dark me-2" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                <div class="alert-message">
-                    <strong>Hello there!</strong> A simple success alert—check it out!
-                </div>
-            </div>
-            <h5 class="card-title">Basic Table</h5>
-            <h6 class="card-subtitle text-muted">Using the most basic table markup, here’s how .table-based tables look
-                in Bootstrap.
-            </h6>
+        <div class="mb-3 row">
+          <label class="col-form-label col-sm-2 text-sm-end pt-sm-0">Options</label>
+          <div class="col-sm-10">
+            <label class="form-check m-0">
+              <input type="checkbox" id="chkIsDetectOrientation" class="form-check-input">
+              <span class="form-check-label">Detect orientation and auto-rotate image if needed</span>
+            </label>
+            <label class="form-check m-0">
+              <input type="checkbox" class="form-check-input">
+              <span class="form-check-label">Check me out</span>
+            </label>
+          </div>
         </div>
-        <table class="table table-responsive">
-            <thead>
-                <tr>
-                    <th style="width:40%;">Name</th>
-                    <th style="width:25%">Phone Number</th>
-                    <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Vanessa Tucker</td>
-                    <td>864-348-0485</td>
-                    <td class="d-none d-md-table-cell">June 21, 1961</td>
-                    <td class="table-action">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
-                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                            </svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-trash align-middle">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                </path>
-                            </svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>William Harris</td>
-                    <td>914-939-2458</td>
-                    <td class="d-none d-md-table-cell">May 15, 1948</td>
-                    <td class="table-action">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
-                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                            </svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-trash align-middle">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                </path>
-                            </svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Sharon Lessman</td>
-                    <td>704-993-5435</td>
-                    <td class="d-none d-md-table-cell">September 14, 1965</td>
-                    <td class="table-action">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
-                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                            </svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-trash align-middle">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                </path>
-                            </svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Christina Mason</td>
-                    <td>765-382-8195</td>
-                    <td class="d-none d-md-table-cell">April 2, 1971</td>
-                    <td class="table-action">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
-                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                            </svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-trash align-middle">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                </path>
-                            </svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Robin Schneiders</td>
-                    <td>202-672-1407</td>
-                    <td class="d-none d-md-table-cell">October 12, 1966</td>
-                    <td class="table-action">
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-edit-2 align-middle">
-                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                            </svg></a>
-                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-trash align-middle">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path
-                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                </path>
-                            </svg></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="mb-3 row">
+          <div class="col-sm-10 ms-sm-auto">
+            <!-- <div class="float-end"> -->
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <div id="spinner-submit" class="spinner-border spinner-border-sm text-primary ms-2 d-none" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title mb-4">Affichages des fichiers</h5>
+      <h6 class="card-subtitle text-muted">Choisir parmi la liste suivante un fichier pour le convertir :
+      </h6>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert-message">
+          <strong>Hello there!</strong> A simple success alert—check it out!
+        </div>
+      </div>
+
+      <div class="text-center p-2">
+        <div class="spinner-border text-dark me-2" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
@@ -218,7 +179,7 @@
 <!-- {#<script src="{{ url_for('static', filename='assets/js/upload_file.js')}}" type="module"></script>#} -->
 
 <script type="module">
-    import { Uppy, Dashboard, XHRUpload } from "https://releases.transloadit.com/uppy/v4.15.0/uppy.min.mjs"
+  import { Uppy, Dashboard, XHRUpload } from "https://releases.transloadit.com/uppy/v4.15.0/uppy.min.mjs"
   import { frLocale } from "/static/assets/js/fr_FR.min.js";
 
   const uppy = new Uppy({
@@ -226,7 +187,7 @@
     locale: frLocale || {},
     restrictions: {
       maxFileSize: 1000000,
-      allowedFileTypes: ['.pdf'],
+      allowedFileTypes: ['.pdf', '.png', '.jpg', '.jpeg'],
       maxNumberOfFiles: 1,
     }
   });
@@ -244,10 +205,46 @@
 
   // Optional: handle upload success/failure
   uppy.on('complete', (result) => {
+    // alert("test")
     console.log('Upload complete! We’ve uploaded these files:', result.successful)
   })
-  //   uppy.on('file-added', (file) => {
-  // 	console.log('Added file', file);
+  // uppy.on('file-added', (file) => {
+  //   alert('Added file', file);
   // });
+  document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const spinner = document.getElementById('spinner-submit');
+    const languageSelect = document.querySelector('select');
+    const detectOrientationCheckbox = document.querySelector('#chkIsDetectOrientation');
+
+    // uppy.setMeta({
+    //   language: languageSelect.value,
+    //   detectOrientation: detectOrientationCheckbox.checked
+    // });
+    spinner.classList.remove("d-none");
+    // uppy.upload();
+  });
+
+  document.querySelectorAll('.select-file-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // 1. Get the selected filename from the data attribute
+      const filename = button.getAttribute('data-filename');
+
+      // 2. Set it in the hidden form field
+      document.getElementById('selected_existing_file').value = filename;
+
+      // 3. Visually indicate selection (optional)
+      document.querySelectorAll('.select-file-btn').forEach(btn => btn.classList.remove('btn-success'));
+      button.classList.add('btn-success');
+
+      // 4. Clear uploaded file (optional, if one exists)
+      // Uppy's internal file state could be reset here if needed
+      // uppy.reset();
+    });
+  });
+
+
 </script>
 {% endblock javascripts %}
