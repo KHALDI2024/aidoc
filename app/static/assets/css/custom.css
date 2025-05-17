@@ -115,6 +115,15 @@ a.sidebar-link svg,
 #dashboard .accordion-button {
   font-size: 15px;
 }
+
+#dashboard tr.file-row.selected {
+  background-color: #e8effc;
+}
+
+#dashboard tr.file-row {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 820px) {
   #files-drag-drop .uppy-Dashboard-inner {
     height: 350px !important;
