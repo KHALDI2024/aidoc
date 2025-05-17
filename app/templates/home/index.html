@@ -217,12 +217,12 @@
     const languageSelect = document.querySelector('select');
     const detectOrientationCheckbox = document.querySelector('#chkIsDetectOrientation');
 
-    // uppy.setMeta({
-    //   language: languageSelect.value,
-    //   detectOrientation: detectOrientationCheckbox.checked
-    // });
+    uppy.setMeta({
+      language: languageSelect.value,
+      detectOrientation: detectOrientationCheckbox.checked
+    });
     spinner.classList.remove("d-none");
-    // uppy.upload();
+    uppy.upload();
   });
 
   document.querySelectorAll('.select-file-btn').forEach(button => {
