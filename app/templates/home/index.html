@@ -61,7 +61,7 @@
   <div class="card">
     <div class="card-body" id="upload_file">
       <h5 class="card-title">Importation d'une image ou d'un fichier PDF (.png,.jpg,.jpeg ou .PDF)</h5>
-      <form>
+      <form method="POST" action="/blank">
         <div class="tab mt-4">
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item" role="presentation"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab"
@@ -98,6 +98,7 @@
                     <td class="table-action">
                       <a href="{{ url_for('home_blueprint.preview_file', filename=file) }}" target="_blank"><i
                           class="align-middle me-2" data-feather="eye"></i></a>
+                      <a href="#"><i class="align-middle" data-feather="trash"></i></a>
                       <!-- <button class="btn btn-sm btn-outline-primary select-file-btn"
                             data-filename="{{ file.name }}">
                             <i class="align-middle me-1" data-feather="check-circle"></i> Choisir
@@ -118,7 +119,7 @@
           <div class="mb-3 row">
             <label class="col-form-label col-sm-2 text-sm-end">Langues</label>
             <div class="col-sm-4">
-              <select class="form-control mb-3">
+              <select class="form-control mb-3" name="lang">
                 <option selected="" value="eng">Anglais</option>
                 <option value="ara">Arabe</option>
                 <option value="fra">Français</option>
@@ -129,7 +130,7 @@
             <label class="col-form-label col-sm-2 text-sm-end pt-sm-0">Options</label>
             <div class="col-sm-10">
               <label class="form-check m-0">
-                <input type="checkbox" id="chkIsDetectOrientation" class="form-check-input">
+                <input type="checkbox" id="chkIsDetectOrientation" class="form-check-input" name="detectOrientation">
                 <span class="form-check-label">Detect orientation and auto-rotate image if needed</span>
               </label>
               <label class="form-check m-0">
@@ -179,75 +180,5 @@
 {% endblock %}
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-<!-- {#<script src="{{ url_for('static', filename='assets/js/upload_file.js')}}" type="module"></script>#} -->
-
-<script type="module">
-  import { Uppy, Dashboard, XHRUpload } from "https://releases.transloadit.com/uppy/v4.15.0/uppy.min.mjs"
-  import { frLocale } from "/static/assets/js/fr_FR.min.js";
-
-  const uppy = new Uppy({
-    debug: true,
-    locale: frLocale || {},
-    restrictions: {
-      maxFileSize: 1000000,
-      allowedFileTypes: ['.pdf', '.png', '.jpg', '.jpeg'],
-      maxNumberOfFiles: 1,
-    }
-  });
-
-  uppy.use(Dashboard, {
-    target: '#files-drag-drop', inline: true,
-  })
-
-  uppy.use(XHRUpload, {
-    endpoint: 'http://127.0.0.1:5000/upload',  // This is your Flask route
-    fieldName: 'file',                         // This matches request.files.getlist('file')
-    formData: true,
-    bundle: true                               // Sends multiple files in one request
-  })
-
-  // Optional: handle upload success/failure
-  uppy.on('complete', (result) => {
-    // alert("test")
-    console.log('Upload complete! We’ve uploaded these files:', result.successful)
-  })
-  // uppy.on('file-added', (file) => {
-  //   alert('Added file', file);
-  // });
-  document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const spinner = document.getElementById('spinner-submit');
-    const languageSelect = document.querySelector('select');
-    const detectOrientationCheckbox = document.querySelector('#chkIsDetectOrientation');
-
-    uppy.setMeta({
-      language: languageSelect.value,
-      detectOrientation: detectOrientationCheckbox.checked
-    });
-    spinner.classList.remove("d-none");
-    uppy.upload();
-  });
-
-  document.querySelectorAll('.select-file-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      // 1. Get the selected filename from the data attribute
-      const filename = button.getAttribute('data-filename');
-
-      // 2. Set it in the hidden form field
-      document.getElementById('selected_existing_file').value = filename;
-
-      // 3. Visually indicate selection (optional)
-      document.querySelectorAll('.select-file-btn').forEach(btn => btn.classList.remove('btn-success'));
-      button.classList.add('btn-success');
-
-      // 4. Clear uploaded file (optional, if one exists)
-      // Uppy's internal file state could be reset here if needed
-      // uppy.reset();
-    });
-  });
-
-
-</script>
+<script src="{{ url_for('static', filename='assets/js/upload_file.js')}}" type="module"></script>
 {% endblock javascripts %}
