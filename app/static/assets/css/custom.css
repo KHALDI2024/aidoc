@@ -1,6 +1,6 @@
 .sidebar-brand img {
-    width: 120px;
-    max-width: 100%;
+  width: 120px;
+  max-width: 100%;
 }
 .sidebar-content.js-simplebar {
   box-shadow: 0 0 2rem 0 rgba(33, 37, 41, 0.1);
@@ -64,9 +64,44 @@ a.sidebar-link svg,
   margin: auto;
 }
 
+.uppy-size--md .uppy-StatusBar.is-waiting .uppy-StatusBar-actionBtn--upload,
+.uppy-StatusBar-actions .uppy-c-btn:not(:disabled):not(.disabled) {
+  display: none;
+}
+
 /* TABS */
-.tab .nav-tabs .nav-item {
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    text-align: center;
+#tabs .nav-tabs .nav-item {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+/* Accordion */
+#dashboard .accordion-button:not(.collapsed) {
+  background-color: transparent;
+}
+#dashboard .accordion {
+  --bs-accordion-bg: #fff;
+  --bs-accordion-border-color: transparent;
+}
+#dashboard .accordion-button:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+#dashboard .accordion-button {
+  font-size: 15px;
+}
+@media only screen and (min-width: 820px) {
+  #files-drag-drop .uppy-Dashboard-inner {
+    height: 400px !important;
+    width: 650px !important;
+  }
+}
+@media only screen and (max-width: 819px) {
+  #files-drag-drop .uppy-Dashboard-inner {
+    height: 330px !important;
+    width: 250px !important;
+    min-width: 250px;
+  }
 }
