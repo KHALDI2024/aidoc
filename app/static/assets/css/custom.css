@@ -119,13 +119,11 @@ a.sidebar-link svg,
   #files-drag-drop .uppy-Dashboard-inner {
     height: 350px !important;
     width: 650px !important;
-    max-width: 100%;
   }
 }
 @media only screen and (max-width: 819px) {
   #files-drag-drop .uppy-Dashboard-inner {
     height: 300px !important;
     width: 250px !important;
-    max-width: 100%;
   }
 }
