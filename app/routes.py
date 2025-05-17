@@ -23,7 +23,7 @@ def index():
             if os.path.isfile(file_path) and os.path.splitext(filename)[1].lower() in ALLOWED_EXTENSIONS:
                 size_bytes = os.path.getsize(file_path)
                 size_bytes = os.path.getsize(file_path)
-                size_mb = round(size_bytes / (1024 * 1024), 2)  # Convert to MB                extension = os.path.splitext(filename)[1].lower()
+                size_mb = round(size_bytes / (1024 * 1024), 2)  # Convert to MB 
                 extension = os.path.splitext(filename)[1].lower()
 
                 file_list.append({
@@ -50,6 +50,13 @@ def preview_file(filename):
     # Return file for inline display (preview in browser if supported)
     return send_from_directory(folder_path, filename, as_attachment=False)
 
+@blueprint.route("/blank", methods=["POST"])
+def blank():
+    file_path=request.form.get("uploaded_file")
+    lang=request.form.get("lang")
+    detectOrientation=request.form.get("detectOrientation")
+    return render_template("pages/pages-blank.html", segment="blank", file_path=file_path, lang=lang, detectOrientation=detectOrientation)
+
 
 @blueprint.route("/charts")
 def charts():
@@ -64,11 +71,6 @@ def icons():
 @blueprint.route("/maps")
 def maps():
     return render_template("pages/maps-google.html", segment="maps")
-
-
-@blueprint.route("/blank")
-def blank():
-    return render_template("pages/pages-blank.html", segment="blank")
 
 
 @blueprint.route("/profile")
