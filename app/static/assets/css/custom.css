@@ -124,15 +124,30 @@ a.sidebar-link svg,
   cursor: pointer;
 }
 
-@media only screen and (min-width: 820px) {
+/* @media only screen and (min-width: 820px) {
   #files-drag-drop .uppy-Dashboard-inner {
     height: 350px !important;
     width: 650px !important;
   }
+} */
+
+@media only screen and (min-width: 820px) {
+  #files-drag-drop .uppy-Dashboard-inner {
+      height: 300px !important;
+      width: 450px !important;
+  }
 }
+
 @media only screen and (max-width: 819px) {
   #files-drag-drop .uppy-Dashboard-inner {
     height: 300px !important;
     width: 250px !important;
   }
+}
+
+[data-uppy-num-acquirers="0"] .uppy-Dashboard-AddFiles-title {
+    text-align: center;
+    transform: translate(0, -50%);
+    top: 50%;
+    position: absolute;
 }
