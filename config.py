@@ -3,8 +3,26 @@ from pathlib import Path
 
 class Config(object):
 
+    # Root of the entire project
     BASE_DIR = Path(__file__).resolve().parent
-    
+
+    UPLOAD_FOLDER = BASE_DIR / 'app' / 'uploads'
+    OUTPUT_FOLDER = BASE_DIR / 'app' / 'outputs'
+    PROCESSED_FOLDER = UPLOAD_FOLDER / 'images'
+    # Dynamically define paths for uploaded PDFs and processed images
+    # UPLOAD_FOLDER = BASE_DIR / 'uploads'
+    # PROCESSED_FOLDER = UPLOAD_FOLDER / 'images'
+
+    # Make sure paths are strings (for Flask compatibility)
+    UPLOAD_FOLDER = str(UPLOAD_FOLDER)
+    OUTPUT_FOLDER = str(OUTPUT_FOLDER)
+    PROCESSED_FOLDER = str(PROCESSED_FOLDER)
+
+    # You can also create folders automatically (optional but helpful)
+    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    os.makedirs(PROCESSED_FOLDER, exist_ok=True)
+
     # USERS_ROLES  = { 'ADMIN'  :1 , 'USER'      : 2 }
     # USERS_STATUS = { 'ACTIVE' :1 , 'SUSPENDED' : 2 }
     

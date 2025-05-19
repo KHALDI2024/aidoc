@@ -6,6 +6,9 @@ from jinja2 import TemplateNotFound
 
 import os
 
+# UPLOAD_FOLDER = "../uploads/"
+# PROCESSED_FOLDER = "../uploads/images/"
+
 
 @blueprint.route("/")
 @blueprint.route("/index")
@@ -16,25 +19,25 @@ def index():
     try:
         # Get the list of files in the folder
         # files = os.listdir(folder_path)
-        ALLOWED_EXTENSIONS = {'.pdf', '.png', '.jpg', '.jpeg'}
+        ALLOWED_EXTENSIONS = {".pdf", ".png", ".jpg", ".jpeg"}
 
         for filename in os.listdir(folder_path):
             file_path = os.path.join(folder_path, filename)
-            if os.path.isfile(file_path) and os.path.splitext(filename)[1].lower() in ALLOWED_EXTENSIONS:
+            if (
+                os.path.isfile(file_path)
+                and os.path.splitext(filename)[1].lower() in ALLOWED_EXTENSIONS
+            ):
                 size_bytes = os.path.getsize(file_path)
                 size_bytes = os.path.getsize(file_path)
-                size_mb = round(size_bytes / (1024 * 1024), 2)  # Convert to MB 
+                size_mb = round(size_bytes / (1024 * 1024), 2)  # Convert to MB
                 extension = os.path.splitext(filename)[1].lower()
 
-                file_list.append({
-                    "name": filename,
-                    "size": size_mb,
-                    "extension": extension
-                })
+                file_list.append(
+                    {"name": filename, "size": size_mb, "extension": extension}
+                )
     except Exception as e:
         file_list = []
         print(f"Error reading files: {e}")
-
 
     return render_template("home/index.html", segment="index", files=file_list)
 
@@ -50,12 +53,51 @@ def preview_file(filename):
     # Return file for inline display (preview in browser if supported)
     return send_from_directory(folder_path, filename, as_attachment=False)
 
+
+@blueprint.route("/process", methods=["POST"])
+def process_pdf():
+    from app.utils.pdf_utils import (
+        check_exiting_poppler,
+        convert_pdf_to_images,
+        recognising_text_from_images,
+        get_text_by_tesseract,
+    )
+
+    file_name = request.form.get("uploaded_file")
+    language = request.form.get("lang")
+    detectOrientation = request.form.get("detectOrientation")
+
+    file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
+    output_path = os.path.join(current_app.config["OUTPUT_FOLDER"], "output_text.txt")
+
+    poppler_path = check_exiting_poppler()
+    image_counter = convert_pdf_to_images(file_path, poppler_path)
+    thresh = recognising_text_from_images(image_counter, language, output_path)
+    result = get_text_by_tesseract(thresh, language)
+
+    return render_template(
+        "pages/process.html",
+        segment="index",
+        result=result,
+        file_name=file_name,
+        file_path=file_path,
+        lang=language,
+        detectOrientation=detectOrientation,
+    )
+
+
 @blueprint.route("/blank", methods=["POST"])
 def blank():
-    file_path=request.form.get("uploaded_file")
-    lang=request.form.get("lang")
-    detectOrientation=request.form.get("detectOrientation")
-    return render_template("pages/pages-blank.html", segment="blank", file_path=file_path, lang=lang, detectOrientation=detectOrientation)
+    file_path = request.form.get("uploaded_file")
+    lang = request.form.get("lang")
+    detectOrientation = request.form.get("detectOrientation")
+    return render_template(
+        "pages/pages-blank.html",
+        segment="blank",
+        file_path=file_path,
+        lang=lang,
+        detectOrientation=detectOrientation,
+    )
 
 
 @blueprint.route("/charts")

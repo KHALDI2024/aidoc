@@ -20,7 +20,7 @@ from flask_cors import CORS
 # from app.authentication.oauth import github_blueprint, google_blueprint
 
 def create_app(config):
-
+    
     # Contextual
     static_prefix = '/static'
 
@@ -37,7 +37,11 @@ def create_app(config):
     CORS(app)
 
     # Set upload folder path
-    app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'uploads')
+    # app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'uploads')
+    # app.config['UPLOAD_FOLDER'] = os.path.join(config.BASE_DIR, 'uploads')
+    # Optional: print to verify path
+    print(' > UPLOAD_FOLDER from config:', app.config['UPLOAD_FOLDER'])
+    print(' > PROCESSED_FOLDER from config:', config.PROCESSED_FOLDER)
 
     # register_extensions(app)
     # register_blueprints(app)

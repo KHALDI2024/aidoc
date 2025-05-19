@@ -1,14 +1,72 @@
-MODÈLE FOURNI PAR
-j_— Satappä
-base o lu
+Test PDF
 
-LES ARTISANS TRAVAUX DU BÂTIMENT
+Lorem ipsum is simply dummy text af the printing and typesetting industry. Larem lpsurn has been the
+industry's standard dummy text ever since the 1500s, when an unknewn printer took a galley af type
+and scrambled it ta make a type specimen book. It has survived nat only five centuries, but also the leap
+inte electronic typesetting, remaining essentially unchanged. It was aapularised in the 1960s with the
+release of Letraset sheets cantaining Lorem lpsum passages, and more recently with desktop publishing
+software like Aldus PageMaker including versions of Larem Ipsum.
+
+Lorem ipsum is simply dummy text af the printing and typesetting industry. Larem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknawn printer teak a galley af type
+and scrambied it to make a type specimen baok. It has survived not arly five centuries, but also the leap
+inte electronic typesetting, remaining essentially unchanged. It was papularised in the 1960s with the
+release of Letraset sheets cantaining Larem Ipsum passages, and more recently with desktop publishing
+software like Aldus PageMaker including versions of Larem lpsum.
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lerem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+and serambied it to make a type specimen baok. It has survived not arly five centuries, but alse the leap
+inte electronic typesetting, remaining essentially unchanged. lt was papularised in the 1960s with the
+release of Letraset sheets cantaining Lorem ipsum passages, and more recently with desktop publishing
+software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Larem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknawn printer took a galley of type
+and scrambled it to make a type specimen book. It has survived nat arly five centuries, but also the leap
+inte electronic typesetting, remaining essentially unchanged. lt was popularised in the 1960s with the
+release of Letraset sheets cantaining Lorem ipsum passages, and more recently with desktop publishing
+software like Aldus PageMaker meluding versions of Larem Ipsum.
+Test PDF
+
+Lorem ipsum is simply dummy text af the printing and typesetting industry. Larem lpsurn has been the
+industry's standard dummy text ever since the 1500s, when an unknewn printer took a galley af type
+and scrambled it ta make a type specimen book. It has survived nat only five centuries, but also the leap
+inte electronic typesetting, remaining essentially unchanged. It was aapularised in the 1960s with the
+release of Letraset sheets cantaining Lorem lpsum passages, and more recently with desktop publishing
+software like Aldus PageMaker including versions of Larem Ipsum.
+
+Lorem ipsum is simply dummy text af the printing and typesetting industry. Larem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknawn printer teak a galley af type
+and scrambied it to make a type specimen baok. It has survived not arly five centuries, but also the leap
+inte electronic typesetting, remaining essentially unchanged. It was papularised in the 1960s with the
+release of Letraset sheets cantaining Larem Ipsum passages, and more recently with desktop publishing
+software like Aldus PageMaker including versions of Larem lpsum.
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lerem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+and serambied it to make a type specimen baok. It has survived not arly five centuries, but alse the leap
+inte electronic typesetting, remaining essentially unchanged. lt was papularised in the 1960s with the
+release of Letraset sheets cantaining Lorem ipsum passages, and more recently with desktop publishing
+software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Larem Ipsum has been the
+industry's standard dummy text ever since the 1500s, when an unknawn printer took a galley of type
+and scrambled it to make a type specimen book. It has survived nat arly five centuries, but also the leap
+inte electronic typesetting, remaining essentially unchanged. lt was popularised in the 1960s with the
+release of Letraset sheets cantaining Lorem ipsum passages, and more recently with desktop publishing
+software like Aldus PageMaker meluding versions of Larem Ipsum.
+MODÈLE FOURNI PAR
+di Betapré
+1on 1> i
+
+LES ARTISANS TRAUVAUX DU BÂTIMENT ce u
 
 SARL NEUF ET RENOVATION
 
 Nom du client
 
-AVOIR Adresse du client
+AVO| R Adresse du client
 
 Code postal et ville du client
 Numéro : AV50
@@ -19,47 +77,47 @@ Avoir sur facture n°24 , émise le 14/04/24
 
 Objet : Exemple de chantier et de prestation
 
-Libellé Total HT _ % tva Total TTC
+Libellé — Total HT — % tva Total TTC
 D‘après le Devis N°254 du 11/02/24
 
-Exemple de travaux 400,00 € 80,00 € 480,00 €
-Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
-Exemple de travaux 40,00 € 240,00 €
+Exemple de travaux 400,00 € 480,00 €
+Exemple de travaux 1 000,00 € 1 100,00 €
+Exemple de travaux 200,00 € 240,00 €
 
 Adresse de chantier : Total HT
 Nom du client
+
 Adresse du chantier TVA à 10%
 Code postal + Ville TVA à 20%
 
 Total TVA
 Date d‘échéance : 25/06/24 Net à déduire
+
 Mode de règlement : Par chèque
 
 Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
 s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
 
-lci toutes vos coordonnées légales
+Ici toutes vos coordonnées légales
 Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
 capital social, code APE, type d‘entreprise
 
-batapplifr copyright 2024, marque déposée numéro 4855781
-Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+batappli.fr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à titre d‘exemple. SYSTEMLOG — Batappli ne peut être tenue responsable de son utilisation.
 
-Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
-
-@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
-
+BatappE Batappli logiciel bâtiment — 04 99 13 32 00 Chiffrez avec Batappli
+Logiciel bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappli.fr
 MODÈLE FOURNI PAR
-j_— Satappä
-base o lu
+di Betapré
+1on 1> i
 
-LES ARTISANS TRAVAUX DU BÂTIMENT
+LES ARTISANS TRAUVAUX DU BÂTIMENT ce u
 
 SARL NEUF ET RENOVATION
 
 Nom du client
 
-AVOIR Adresse du client
+AVO| R Adresse du client
 
 Code postal et ville du client
 Numéro : AV50
@@ -70,47 +128,47 @@ Avoir sur facture n°24 , émise le 14/04/24
 
 Objet : Exemple de chantier et de prestation
 
-Libellé Total HT _ % tva Total TTC
+Libellé — Total HT — % tva Total TTC
 D‘après le Devis N°254 du 11/02/24
 
-Exemple de travaux 400,00 € 80,00 € 480,00 €
-Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
-Exemple de travaux 40,00 € 240,00 €
+Exemple de travaux 400,00 € 480,00 €
+Exemple de travaux 1 000,00 € 1 100,00 €
+Exemple de travaux 200,00 € 240,00 €
 
 Adresse de chantier : Total HT
 Nom du client
+
 Adresse du chantier TVA à 10%
 Code postal + Ville TVA à 20%
 
 Total TVA
 Date d‘échéance : 25/06/24 Net à déduire
+
 Mode de règlement : Par chèque
 
 Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
 s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
 
-lci toutes vos coordonnées légales
+Ici toutes vos coordonnées légales
 Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
 capital social, code APE, type d‘entreprise
 
-batapplifr copyright 2024, marque déposée numéro 4855781
-Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+batappli.fr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à titre d‘exemple. SYSTEMLOG — Batappli ne peut être tenue responsable de son utilisation.
 
-Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
-
-@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
-
+BatappE Batappli logiciel bâtiment — 04 99 13 32 00 Chiffrez avec Batappli
+Logiciel bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappli.fr
 MODÈLE FOURNI PAR
-j_— Satappä
-base o lu
+di Betapré
+1on 1> i
 
-LES ARTISANS TRAVAUX DU BÂTIMENT
+LES ARTISANS TRAUVAUX DU BÂTIMENT ce u
 
 SARL NEUF ET RENOVATION
 
 Nom du client
 
-AVOIR Adresse du client
+AVO| R Adresse du client
 
 Code postal et ville du client
 Numéro : AV50
@@ -121,84 +179,33 @@ Avoir sur facture n°24 , émise le 14/04/24
 
 Objet : Exemple de chantier et de prestation
 
-Libellé Total HT _ % tva Total TTC
+Libellé — Total HT — % tva Total TTC
 D‘après le Devis N°254 du 11/02/24
 
-Exemple de travaux 400,00 € 80,00 € 480,00 €
-Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
-Exemple de travaux 40,00 € 240,00 €
+Exemple de travaux 400,00 € 480,00 €
+Exemple de travaux 1 000,00 € 1 100,00 €
+Exemple de travaux 200,00 € 240,00 €
 
 Adresse de chantier : Total HT
 Nom du client
+
 Adresse du chantier TVA à 10%
 Code postal + Ville TVA à 20%
 
 Total TVA
 Date d‘échéance : 25/06/24 Net à déduire
+
 Mode de règlement : Par chèque
 
 Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
 s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
 
-lci toutes vos coordonnées légales
+Ici toutes vos coordonnées légales
 Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
 capital social, code APE, type d‘entreprise
 
-batapplifr copyright 2024, marque déposée numéro 4855781
-Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
+batappli.fr copyright 2024, marque déposée numéro 4855781
+Avertissement : le modèle est donné à titre d‘exemple. SYSTEMLOG — Batappli ne peut être tenue responsable de son utilisation.
 
-Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
-
-@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
-
-MODÈLE FOURNI PAR
-j_— Satappä
-base o lu
-
-LES ARTISANS TRAVAUX DU BÂTIMENT
-
-SARL NEUF ET RENOVATION
-
-Nom du client
-
-AVOIR Adresse du client
-
-Code postal et ville du client
-Numéro : AV50
-
-Date : 10/06/2024 N° TVA du client
-
-Avoir sur facture n°24 , émise le 14/04/24
-
-Objet : Exemple de chantier et de prestation
-
-Libellé Total HT _ % tva Total TTC
-D‘après le Devis N°254 du 11/02/24
-
-Exemple de travaux 400,00 € 80,00 € 480,00 €
-Exemple de travaux 1 000,00 € 100,00 € 1 100,00 €
-Exemple de travaux 40,00 € 240,00 €
-
-Adresse de chantier : Total HT
-Nom du client
-Adresse du chantier TVA à 10%
-Code postal + Ville TVA à 20%
-
-Total TVA
-Date d‘échéance : 25/06/24 Net à déduire
-Mode de règlement : Par chèque
-
-Tout retard de paiement donnera droit à une indemnité pour frais de recouvrement
-s‘élevant à 40 €. (Loi N°2012—387 du 22 mars 2012)
-
-lci toutes vos coordonnées légales
-Vos contacts (tél, adresse, mail...), N° de siret, N° de TVA, vos référérences d‘assurance décennale,
-capital social, code APE, type d‘entreprise
-
-batapplifr copyright 2024, marque déposée numéro 4855781
-Avertissement : le modèle est donné à tire d‘exemple. SYSTEMLOG — Batappii ne peut être tenue responsable de son utiisation.
-
-Logicial bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappii.fr
-
-@ Batappi Batappli logiciel bâtiment — 04 99 13 32 00 Clüffrec avec Batuppäi
-
+BatappE Batappli logiciel bâtiment — 04 99 13 32 00 Chiffrez avec Batappli
+Logiciel bâtiment 215, avenue Clément Ader — 34170 Castelnau le Lez — info@batappli.fr
