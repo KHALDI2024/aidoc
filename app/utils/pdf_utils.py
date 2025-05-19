@@ -109,9 +109,12 @@ def recognising_text_from_images(image_counter, language, outfile_path):
         # Save cleaned image (optional)
         cv2.imwrite(PROCESSED_FOLDER + "/cleaned_" + str(i) + ".jpg", gray)
 
-        if language != "ar":
+        if language != "ara":
+            print("get_text_by_tesseract")
             text = get_text_by_tesseract(thresh, language)
         else:
+            language = "ar"
+            print("get_text_by_easyocr")
             text = get_text_by_easyocr(filename, language)
 
         # Write the processed text to the file
