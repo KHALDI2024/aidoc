@@ -122,7 +122,7 @@ def recognising_text_from_images(image_counter, language, outfile_path):
 
     # Close the file after writing all the text
     f.close()
-    return thresh
+    return text
 
 
 def get_text_by_tesseract(thresh, language):
@@ -149,7 +149,7 @@ def get_text_by_easyocr(image_path, language="ar"):
     reader = easyocr.Reader([language])  # Arabic
     # results = reader.readtext('../uploads/images/page_1.jpg', paragraph=True, detail=0)
     # print("\n".join(results))
-    return reader.readtext(image_path, paragraph=True, detail=0)
+    return str(reader.readtext(image_path, paragraph=True, detail=0))
 
 
 def mark_region(image_path):

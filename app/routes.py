@@ -72,8 +72,7 @@ def process_pdf():
 
     poppler_path = check_exiting_poppler()
     image_counter = convert_pdf_to_images(file_path, poppler_path)
-    thresh = recognising_text_from_images(image_counter, language, output_path)
-    result = get_text_by_tesseract(thresh, language)
+    result = recognising_text_from_images(image_counter, language, output_path)
 
     return render_template(
         "pages/process.html",
