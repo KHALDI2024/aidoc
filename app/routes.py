@@ -60,7 +60,8 @@ def process_pdf():
         check_exiting_poppler,
         convert_pdf_to_images,
         recognising_text_from_images,
-        get_text_by_tesseract,
+        check_file_extension,
+        recognising_text_from_image,
     )
 
     file_name = request.form.get("uploaded_file")
@@ -69,10 +70,14 @@ def process_pdf():
 
     file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
     output_path = os.path.join(current_app.config["OUTPUT_FOLDER"], "output_text.txt")
-
     poppler_path = check_exiting_poppler()
-    image_counter = convert_pdf_to_images(file_path, poppler_path)
-    result = recognising_text_from_images(image_counter, language, output_path)
+
+    is_pdf = check_file_extension(file_path)
+    if is_pdf:
+        image_counter = convert_pdf_to_images(file_path, poppler_path)
+        result = recognising_text_from_images(image_counter, language, output_path)
+    else:
+        result = recognising_text_from_image(file_path, language, output_path)
 
     return render_template(
         "pages/process.html",

@@ -40,6 +40,24 @@ def check_GPU():
         print("GPU is not available.")
 
 
+def check_file_extension(file_path):
+    print("file_pathtesttt : "+ file_path)
+    file_name, file_extension = os.path.splitext(file_path)
+    file_extension = file_extension.lower()
+    if file_extension == ".pdf":
+        print("pdf")
+
+        return True
+    elif file_extension in (".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"):
+        print("image")
+
+        return False
+    else:
+        print("Unknown")
+
+        return "Unknown"
+
+
 def convert_pdf_to_images(pdf_path, poppler_path):
     """
     Part #1 : Converting PDF to images
@@ -70,6 +88,27 @@ def convert_pdf_to_images(pdf_path, poppler_path):
         # Increase counter to update filename
         image_counter = image_counter + 1
     return image_counter
+
+
+def recognising_text_from_image(file_path, language, outfile_path):
+    # Open the file in append mode so that contents of all images are added to the same file
+    f = open(outfile_path, "a", encoding="utf-8")
+    # filename = PROCESSED_FOLDER + file_path
+
+    # Load image and preprocess
+    image = cv2.imread(file_path)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray = cv2.bilateralFilter(gray, 11, 17, 17)  # Noise reduction
+    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+    text = apply_ocr(language, thresh, file_path)
+
+    # Write the processed text to the file
+    f.write(text)
+
+    # Close the file after writing all the text
+    f.close()
+    return text
 
 
 def recognising_text_from_images(image_counter, language, outfile_path):
@@ -109,13 +148,7 @@ def recognising_text_from_images(image_counter, language, outfile_path):
         # Save cleaned image (optional)
         cv2.imwrite(PROCESSED_FOLDER + "/cleaned_" + str(i) + ".jpg", gray)
 
-        if language != "ara":
-            print("get_text_by_tesseract")
-            text = get_text_by_tesseract(thresh, language)
-        else:
-            language = "ar"
-            print("get_text_by_easyocr")
-            text = get_text_by_easyocr(filename, language)
+        text = apply_ocr(language, thresh, filename)
 
         # Write the processed text to the file
         f.write(text)
@@ -123,6 +156,16 @@ def recognising_text_from_images(image_counter, language, outfile_path):
     # Close the file after writing all the text
     f.close()
     return text
+
+
+def apply_ocr(language, thresh, filename):
+    if language != "ara":
+        print("get_text_by_tesseract")
+        return get_text_by_tesseract(thresh, language)
+    else:
+        language = "ar"
+        print("get_text_by_easyocr")
+        return get_text_by_easyocr(filename, language)
 
 
 def get_text_by_tesseract(thresh, language):
