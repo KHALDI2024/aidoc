@@ -1,14 +1,18 @@
+from functools import cache
+from unittest import result
+
+from sympy import false
 from app.home import blueprint
-from flask import render_template, request, current_app, send_from_directory, abort
-
-# from flask_login import login_required, current_user
+from flask import (
+    render_template,
+    request,
+    current_app,
+    send_from_directory,
+    abort,
+    jsonify,
+)
 from jinja2 import TemplateNotFound
-
 import os
-
-# UPLOAD_FOLDER = "../uploads/"
-# PROCESSED_FOLDER = "../uploads/images/"
-
 
 @blueprint.route("/")
 @blueprint.route("/index")
@@ -54,8 +58,28 @@ def preview_file(filename):
     return send_from_directory(folder_path, filename, as_attachment=False)
 
 
-@blueprint.route("/process", methods=["POST"])
-def process_pdf():
+@blueprint.route("/process")
+def show_process_page():
+    return render_template("pages/process.html", segment="index")
+
+
+# @blueprint.route("/process", methods=["POST"])
+# def show_process_page():
+#     file_name = request.form.get("uploaded_file")
+#     lang = request.form.get("lang")
+#     detectOrientation = request.form.get("detectOrientation")
+
+#     return render_template(
+#         "pages/process.html",
+#         uploaded_file=file_name,
+#         lang=lang,
+#         detectOrientation=detectOrientation,
+#         segment="index",
+#     )
+
+
+@blueprint.route("/process-task", methods=["POST"])
+def process_task():
     from app.utils.pdf_utils import (
         check_exiting_poppler,
         convert_pdf_to_images,
@@ -64,31 +88,51 @@ def process_pdf():
         recognising_text_from_image,
     )
 
-    file_name = request.form.get("uploaded_file")
-    language = request.form.get("lang")
-    detectOrientation = request.form.get("detectOrientation")
+    try:
+        file_name = request.form.get("uploaded_file")
+        language = request.form.get("lang")
+        detectOrientation = request.form.get("detectOrientation")
+        # Fake progress stages
+        status = {"progress": 0}
+        file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
+        output_path = os.path.join(
+            current_app.config["OUTPUT_FOLDER"], "output_text.txt"
+        )
+        poppler_path = check_exiting_poppler()
 
-    file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
-    output_path = os.path.join(current_app.config["OUTPUT_FOLDER"], "output_text.txt")
-    poppler_path = check_exiting_poppler()
+        is_pdf = check_file_extension(file_path)
+        if is_pdf:
+            image_counter = convert_pdf_to_images(file_path, poppler_path)
+            result = recognising_text_from_images(image_counter, language, output_path)
+        else:
+            result = recognising_text_from_image(file_path, language, output_path)
+        return (
+            jsonify(
+                {
+                    "ok": True,
+                    "result": result,
+                    # "progress": 100,
+                    "file_name": file_name,
+                    "file_path": file_path,
+                    "lang": language,
+                    "detectOrientation": detectOrientation,
+                }
+            ),
+            200,
+        )  # Success
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400  # Bad request
+    except Exception as e:
+        return (
+            jsonify({"error": "Message d'erreur : " + str(e)}),
+            500,
+        )  # Internal server error
 
-    is_pdf = check_file_extension(file_path)
-    if is_pdf:
-        image_counter = convert_pdf_to_images(file_path, poppler_path)
-        result = recognising_text_from_images(image_counter, language, output_path)
-    else:
-        result = recognising_text_from_image(file_path, language, output_path)
-
-    return render_template(
-        "pages/process.html",
-        segment="index",
-        result=result,
-        file_name=file_name,
-        file_path=file_path,
-        lang=language,
-        detectOrientation=detectOrientation,
-    )
-
+# @blueprint.route("/get-progress", methods=["GET"])
+# def get_progress():
+#     # Get the current progress from the session
+#     progress = session.get('progress', 0)
+#     return jsonify({"progress": progress})
 
 @blueprint.route("/blank", methods=["POST"])
 def blank():

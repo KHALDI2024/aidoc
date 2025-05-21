@@ -77,7 +77,8 @@ a.sidebar-link svg,
   flex: 1 1 auto;
   text-align: center;
 }
-#dashboard .nav-tabs .nav-link {
+#dashboard .nav-tabs .nav-link ,
+#process .nav-tabs .nav-link {
   font-size: .925rem;
   font-weight: bold;
   margin-bottom: -1px;
@@ -86,14 +87,17 @@ a.sidebar-link svg,
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
-#dashboard .tab .tab-content {
+#dashboard .tab .tab-content ,
+#process .tab .tab-content {
   box-shadow: none;
   padding: 0;
 }
-#dashboard .nav-tabs {
+#dashboard .nav-tabs ,
+#process .nav-tabs {
   border-bottom: 1px solid #dee2e6;
 }
-#dashboard .nav-tabs .nav-link.active {
+#dashboard .nav-tabs .nav-link.active ,
+#process .nav-tabs .nav-link.active {
   color: var(--color-text);
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;

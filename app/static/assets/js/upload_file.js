@@ -7,7 +7,6 @@ let uploadedFileData = null;
 
 var form = document.getElementById("form_upload");
 
-
 const uppy = new Uppy({
     debug: true,
     locale: frLocale || {},
@@ -101,6 +100,7 @@ document.querySelector('#form_upload').addEventListener('submit', async function
             form.appendChild(hiddenInput);
         }
         hiddenInput.value = uploadedFile;
+        this.disabled = true;
         form.submit();
     }
     spinner.classList.add("d-none");

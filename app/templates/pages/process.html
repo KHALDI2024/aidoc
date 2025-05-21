@@ -2,79 +2,70 @@
 
 {% block title %} Process {% endblock %}
 
-{% block content %}
-<div class="container-fluid p-0">
+{% block stylesheets %}
+<script src="https://unpkg.com/konva@9.3.20/konva.min.js"></script>
 
-	<h1 class="h3 mb-3">Process</h1>
+{% endblock stylesheets %}
+
+{% block content %}
+<div id="container"></div>
+<div id="preview-text">🖱️ Survolez une boîte pour voir le texte</div>
+
+<div id="process" class="container-fluid p-0">
+
+	{#<h1 class="h3 mb-3">Process</h1>#}
 
 	<div class="row">
 		<div class="col-6">
 			<div class="card">
-				<div class="card-header">
-					<h2 class="card-title mb-0">{{file_name}}</h2>
+				<div class="card-header d-none" id="card_title_file">
+					<h2 class="card-title mb-0" id="file_name"></h2>
+					<ul>
+						<li id="lang"></li>
+					</ul>
 				</div>
 				<div class="card-body">
-					{{result}}
+					{#{{result}}
 					{{file_path}}
 					{{lang}}
-					{{detectOrientation}}
+					{{detectOrientation}}#}
+					{#<h2>Processing file</h2>#}
+					<div id="waiting_bloc">
+						<div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+							<span class="visually-hidden">Loading...</span>
+						</div>
+						<span id="progress_label">Processing file...</span>
+
+						<div class="placeholders placeholder-glow">
+							<span class="placeholder col-6"></span>
+							<span class="placeholder w-75"></span>
+							<span class="placeholder" style="width: 25%;"></span>
+							<span class="placeholder col-12"></span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="card">
 				<div class="card-header">
-					<h5 class="card-title mb-0">Empty card</h5>
+					<h5 class="card-title mb-0">Résultat</h5>
 				</div>
 				<div class="card-body">
 					<div id="tabs" class="tab">
 						<ul class="nav nav-tabs" role="tablist">
-							<li class="nav-item" role="presentation"><a class="nav-link" href="#tab-1"
-									data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Home</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link active" href="#tab-1"
+									data-bs-toggle="tab" role="tab" aria-selected="active" tabindex="-1">Texte</a></li>
 							<li class="nav-item" role="presentation"><a class="nav-link" href="#tab-2"
-									data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Profile</a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link active" href="#tab-3"
-									data-bs-toggle="tab" role="tab" aria-selected="true">Messages</a></li>
+									data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Key/value</a>
+							</li>
 						</ul>
 						<div class="tab-content">
-							<div class="tab-pane" id="tab-1" role="tabpanel">
-								<h4 class="tab-title">Default tabs</h4>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-									dolor tellus eget condimentum
-									rhoncus. Aenean massa. Cum sociis natoque penatibus et magnis neque dis parturient
-									montes, nascetur ridiculus mus.
-								</p>
-								<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
-									massa quis enim. Donec pede
-									justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-									imperdiet a, venenatis vitae,
-									justo.</p>
+							<div class="tab-pane active show" id="tab-1" role="tabpanel">
+								<div id="result" style="margin-top:20px;"></div>
 							</div>
 							<div class="tab-pane" id="tab-2" role="tabpanel">
-								<h4 class="tab-title">Another one</h4>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-									dolor tellus eget condimentum
-									rhoncus. Aenean massa. Cum sociis natoque penatibus et magnis neque dis parturient
-									montes, nascetur ridiculus mus.
-								</p>
-								<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
-									massa quis enim. Donec pede
-									justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-									imperdiet a, venenatis vitae,
-									justo.</p>
-							</div>
-							<div class="tab-pane active show" id="tab-3" role="tabpanel">
-								<h4 class="tab-title">One more</h4>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-									dolor tellus eget condimentum
-									rhoncus. Aenean massa. Cum sociis natoque penatibus et magnis neque dis parturient
-									montes, nascetur ridiculus mus.
-								</p>
-								<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
-									massa quis enim. Donec pede
-									justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-									imperdiet a, venenatis vitae,
-									justo.</p>
+
 							</div>
 						</div>
 					</div>
@@ -87,4 +78,156 @@
 {% endblock %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+
+<script>
+	// Automatically start processing after page loads
+	document.addEventListener("DOMContentLoaded", () => {
+		const formData = new FormData();
+		formData.append("uploaded_file", "{{ request.args.get('uploaded_file') }}");
+		formData.append("lang", "{{ request.args.get('lang') }}");
+		formData.append("detectOrientation", "{{ request.args.get('detectOrientation') }}");
+
+		fetch("/process-task", {
+				method: "POST",
+				body: formData
+			})
+			.then(response => {
+				if (!response.ok) {
+					return response.json().then(errorData => {
+						// Handle HTTP error status codes and show error message
+						throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+					});
+				}
+				return response.json(); // This is for successful responses
+
+			})
+			.then(data => {
+
+				// Update UI
+				document.getElementById("progress_label").textContent = "Completed!";
+				document.getElementById("waiting_bloc").style.display = 'none';
+				document.getElementById("card_title_file").classList.remove('d-none');
+				document.getElementById("file_name").innerHTML = data.file_name;
+				document.getElementById("lang").innerHTML = `Langue : <b>${data.lang}</b>`;
+
+				document.getElementById("result").innerHTML = `
+                <pre>${data.result}</pre>
+            `;
+			}).catch(error => {
+				// Display error message in the UI
+				document.getElementById("progress_label").textContent = `Error: ${error.message}`;
+				document.getElementById("progress_label").style.color = 'red';
+			});
+
+
+		/*const stage = new Konva.Stage({
+			container: 'container',
+			width: imgW,
+			height: imgH
+		});
+		const layer = new Konva.Layer();
+		stage.add(layer);
+		// Afficher l'image
+		Konva.Image.fromURL('../../uploads/images/page_1.jpg', function (imageNode) {
+			layer.add(imageNode);
+			layer.draw();
+		});
+		// Ajouter les rectangles
+		boxes.forEach(b => {
+			const rect = new Konva.Rect({
+				x: b.x,
+				y: b.y,
+				width: b.w,
+				height: b.h,
+				stroke: 'blue',
+				strokeWidth: 1,
+				draggable: false
+			});
+			layer.add(rect);
+			rect.on('mouseover', () => {
+				document.getElementById('preview-text').innerText = b.text;
+			});
+		});
+		layer.draw();*/
+		// START JAVASCRIPT
+		const imgURL =
+			'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/512px-PDF_file_icon.svg.png';
+
+		// Fake bounding boxes (x, y, w, h) + extracted text
+		const boxes = [{
+				x: 50,
+				y: 80,
+				width: 120,
+				height: 30,
+				text: "Titre du document"
+			},
+			{
+				x: 60,
+				y: 130,
+				width: 300,
+				height: 25,
+				text: "Nom: Fatima Zahra Khaldi"
+			},
+			{
+				x: 60,
+				y: 170,
+				width: 300,
+				height: 25,
+				text: "Date: 21/05/2025"
+			}
+		];
+
+		const imgW = 512; // width of image
+		const imgH = 512; // height of image
+
+		const stage = new Konva.Stage({
+			container: 'container',
+			width: imgW,
+			height: imgH
+		});
+
+		const layer = new Konva.Layer();
+		stage.add(layer);
+
+		Konva.Image.fromURL(imgURL, function (imageNode) {
+			imageNode.setAttrs({
+				width: imgW,
+				height: imgH
+			});
+			layer.add(imageNode);
+
+			boxes.forEach(b => {
+				const rect = new Konva.Rect({
+					x: b.x,
+					y: b.y,
+					width: b.width,
+					height: b.height,
+					stroke: 'blue',
+					strokeWidth: 2,
+					dash: [4, 2],
+					draggable: false
+				});
+
+				rect.on('mouseover', () => {
+					document.getElementById('preview-text').innerText = '📝 Texte : ' + b
+						.text;
+					rect.stroke('red');
+					layer.draw();
+				});
+
+				rect.on('mouseout', () => {
+					document.getElementById('preview-text').innerText =
+						'🖱️ Survolez une boîte pour voir le texte';
+					rect.stroke('blue');
+					layer.draw();
+				});
+
+				layer.add(rect);
+			});
+
+			layer.draw();
+		});
+	});
+</script>
+{% endblock javascripts %}
