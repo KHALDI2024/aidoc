@@ -93,7 +93,7 @@ def process_task():
         language = request.form.get("lang")
         detectOrientation = request.form.get("detectOrientation")
         # Fake progress stages
-        status = {"progress": 0}
+        # status = {"progress": 0}
         file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], file_name)
         output_path = os.path.join(
             current_app.config["OUTPUT_FOLDER"], "output_text.txt"

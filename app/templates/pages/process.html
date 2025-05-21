@@ -4,12 +4,39 @@
 
 {% block stylesheets %}
 <script src="https://unpkg.com/konva@9.3.20/konva.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" type="module" defer></script>
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.0.375/pdf.min.mjs"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.0.375/pdf_viewer.min.css"
+	integrity="sha512-bt54/qzXTxutlNalAuK/V3dxe1T7ZDqeEYbZPle3G1kOH+K1zKlQE0ZOkdYVwPDxdCFrdLHwneslj7sA5APizQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+<style>
+	#pdf-container {
+		position: relative;
+		width: fit-content;
+		margin: auto;
+	}
+
+	#pdf-canvas {
+		border: 1px solid #ccc;
+	}
+
+	#konva-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.controls {
+		text-align: center;
+		margin: 1em 0;
+	}
+</style>
 {% endblock stylesheets %}
 
 {% block content %}
-<div id="container"></div>
-<div id="preview-text">🖱️ Survolez une boîte pour voir le texte</div>
+<!-- <div id="container"></div>
+<div id="preview-text">🖱️ Survolez une boîte pour voir le texte</div> -->
 
 <div id="process" class="container-fluid p-0">
 
@@ -25,6 +52,17 @@
 					</ul>
 				</div>
 				<div class="card-body">
+					<div class="controls">
+						<button id="prev">◀️ Prev</button>
+						<span id="page-info">Page 1</span>
+						<button id="next">Next ▶️</button>
+					</div>
+
+					<div id="pdf-container">
+						<canvas id="pdf-canvas"></canvas>
+						<div id="konva-container"></div>
+					</div>
+
 					{#{{result}}
 					{{file_path}}
 					{{lang}}
@@ -79,8 +117,124 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+<script type="module">
+	// URL of the PDF
+	const url = 'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf';
 
+	// Set workerSrc to use CDN
+	pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+	// Load the PDF
+	pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+		// Get the first page
+		return pdfDoc.getPage(3);
+	}).then(page => {
+		const scale = 1.5;
+		const viewport = page.getViewport({ scale });
+
+		// Prepare canvas using PDF page dimensions
+		const canvas = document.getElementById('pdf-render');
+		const context = canvas.getContext('2d');
+		canvas.height = viewport.height;
+		canvas.width = viewport.width;
+
+		// Render PDF page into canvas context
+		const renderContext = {
+			canvasContext: context,
+			viewport: viewport
+		};
+		page.render(renderContext);
+	}).catch(err => {
+		console.error('Error rendering PDF:', err);
+	});
+</script>
 <script>
+	// pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+	// const url = '/../../uploads/facture-avoir.pdf';
+
+	// let pdfDoc = null;
+	// let currentPage = 1;
+	// const scale = 1.5;
+	// const canvas = document.getElementById('pdf-canvas');
+	// const ctx = canvas.getContext('2d');
+	// const konvaContainer = document.getElementById('konva-container');
+	// const pageInfo = document.getElementById('page-info');
+
+	// const stage = new Konva.Stage({
+	// 	container: 'konva-container',
+	// 	width: 0,
+	// 	height: 0
+	// });
+
+	// const layer = new Konva.Layer();
+	// stage.add(layer);
+
+	// pdfjsLib.getDocument(url).promise.then(pdf => {
+	// 	pdfDoc = pdf;
+	// 	renderPage(currentPage);
+	// });
+
+	// function renderPage(num) {
+	// 	pdfDoc.getPage(num).then(page => {
+	// 		const viewport = page.getViewport({ scale });
+
+	// 		// Resize canvas
+	// 		canvas.height = viewport.height;
+	// 		canvas.width = viewport.width;
+
+	// 		// Resize Konva overlay
+	// 		konvaContainer.style.width = viewport.width + 'px';
+	// 		konvaContainer.style.height = viewport.height + 'px';
+	// 		stage.width(viewport.width);
+	// 		stage.height(viewport.height);
+
+	// 		// Clear Konva
+	// 		layer.destroyChildren();
+
+	// 		// Render PDF page into canvas context
+	// 		const renderContext = {
+	// 			canvasContext: ctx,
+	// 			viewport: viewport
+	// 		};
+	// 		page.render(renderContext).promise.then(() => {
+	// 			pageInfo.textContent = `Page ${num} / ${pdfDoc.numPages}`;
+	// 			// Sample BBox (you’ll replace this with real OCR data)
+	// 			const bbox = {
+	// 				x: 100,
+	// 				y: 150,
+	// 				width: 200,
+	// 				height: 50
+	// 			};
+	// 			const rect = new Konva.Rect({
+	// 				x: bbox.x,
+	// 				y: bbox.y,
+	// 				width: bbox.width,
+	// 				height: bbox.height,
+	// 				stroke: 'red',
+	// 				strokeWidth: 2
+	// 			});
+	// 			layer.add(rect);
+	// 			layer.draw();
+	// 		});
+	// 	});
+	// }
+
+	// document.getElementById('prev').addEventListener('click', () => {
+	// 	if (currentPage <= 1) return;
+	// 	currentPage--;
+	// 	renderPage(currentPage);
+	// });
+
+	// document.getElementById('next').addEventListener('click', () => {
+	// 	if (currentPage >= pdfDoc.numPages) return;
+	// 	currentPage++;
+	// 	renderPage(currentPage);
+	// });
+
+
+
+
 	// Automatically start processing after page loads
 	document.addEventListener("DOMContentLoaded", () => {
 		const formData = new FormData();
@@ -89,9 +243,9 @@
 		formData.append("detectOrientation", "{{ request.args.get('detectOrientation') }}");
 
 		fetch("/process-task", {
-				method: "POST",
-				body: formData
-			})
+			method: "POST",
+			body: formData
+		})
 			.then(response => {
 				if (!response.ok) {
 					return response.json().then(errorData => {
@@ -156,26 +310,26 @@
 
 		// Fake bounding boxes (x, y, w, h) + extracted text
 		const boxes = [{
-				x: 50,
-				y: 80,
-				width: 120,
-				height: 30,
-				text: "Titre du document"
-			},
-			{
-				x: 60,
-				y: 130,
-				width: 300,
-				height: 25,
-				text: "Nom: Fatima Zahra Khaldi"
-			},
-			{
-				x: 60,
-				y: 170,
-				width: 300,
-				height: 25,
-				text: "Date: 21/05/2025"
-			}
+			x: 50,
+			y: 80,
+			width: 120,
+			height: 30,
+			text: "Titre du document"
+		},
+		{
+			x: 60,
+			y: 130,
+			width: 300,
+			height: 25,
+			text: "Nom: Fatima Zahra Khaldi"
+		},
+		{
+			x: 60,
+			y: 170,
+			width: 300,
+			height: 25,
+			text: "Date: 21/05/2025"
+		}
 		];
 
 		const imgW = 512; // width of image

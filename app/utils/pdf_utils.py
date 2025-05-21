@@ -18,14 +18,14 @@ PROCESSED_FOLDER = os.path.join(UPLOAD_FOLDER, "images")
 
 
 def check_exiting_poppler():
-    # pytesseract.pytesseract.tesseract_cmd = (
-    #     r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    # )
-    # poppler_path = (
-    #     r"C:\Users\ProBook\Documents\PFA\Release-24.08.0-0\poppler-24.08.0\Library\bin"
-    # )
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Users\fkhaldi\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
-    poppler_path = r'C:\Users\fkhaldi\Documents\SUPMTI\PFA\colab\Release-24.08.0-0\poppler-24.08.0\Library\bin'
+    pytesseract.pytesseract.tesseract_cmd = (
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    )
+    poppler_path = (
+        r"C:\Users\ProBook\Documents\PFA\Release-24.08.0-0\poppler-24.08.0\Library\bin"
+    )
+    # pytesseract.pytesseract.tesseract_cmd = r'C:\Users\fkhaldi\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
+    # poppler_path = r'C:\Users\fkhaldi\Documents\SUPMTI\PFA\colab\Release-24.08.0-0\poppler-24.08.0\Library\bin'
 
     if os.path.isdir(poppler_path):
         print("Poppler path exists!")
