@@ -35,8 +35,7 @@
 {% endblock stylesheets %}
 
 {% block content %}
-<!-- <div id="container"></div>
-<div id="preview-text">🖱️ Survolez une boîte pour voir le texte</div> -->
+
 
 <div id="process" class="container-fluid p-0">
 
@@ -52,23 +51,12 @@
 					</ul>
 				</div>
 				<div class="card-body">
-					<div class="controls">
-						<button id="prev">◀️ Prev</button>
-						<span id="page-info">Page 1</span>
-						<button id="next">Next ▶️</button>
-					</div>
-
-					<div id="pdf-container">
-						<canvas id="pdf-canvas"></canvas>
-						<div id="konva-container"></div>
-					</div>
-
 					{#{{result}}
 					{{file_path}}
 					{{lang}}
 					{{detectOrientation}}#}
 					{#<h2>Processing file</h2>#}
-					<div id="waiting_bloc">
+					<div class="mb-5" id="waiting_bloc">
 						<div class="spinner-border spinner-border-sm text-primary me-2" role="status">
 							<span class="visually-hidden">Loading...</span>
 						</div>
@@ -81,6 +69,20 @@
 							<span class="placeholder col-12"></span>
 						</div>
 					</div>
+					<div>
+						<button class="btn btn-bitbucket" id="prev">Previous</button>
+						<button class="btn btn-bitbucket" id="next">Next</button>
+						&nbsp; &nbsp;
+						<span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+					</div>
+
+					<div id="pdf-container">
+						<canvas id="the-canvas"></canvas>
+						<!-- <div id="konva-container"></div> -->
+					</div>
+					<!-- <div id="container"></div>
+					<div id="preview-text">🖱️ Survolez une boîte pour voir le texte</div>-->
+
 				</div>
 			</div>
 		</div>
@@ -117,7 +119,7 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-<script type="module">
+<!-- <script type="module">
 	// URL of the PDF
 	const url = 'https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf';
 
@@ -147,93 +149,286 @@
 	}).catch(err => {
 		console.error('Error rendering PDF:', err);
 	});
-</script>
-<script>
-	// pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+</script> -->
 
-	// const url = '/../../uploads/facture-avoir.pdf';
+{#<script type="module">
+  // If absolute URL from the remote server is provided, configure the CORS
+  // header on that server.
+  var url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf';
 
-	// let pdfDoc = null;
-	// let currentPage = 1;
-	// const scale = 1.5;
-	// const canvas = document.getElementById('pdf-canvas');
-	// const ctx = canvas.getContext('2d');
-	// const konvaContainer = document.getElementById('konva-container');
+  // Loaded via <script> tag, create shortcut to access PDF.js exports.
+  var { pdfjsLib } = globalThis;
+
+  // The workerSrc property shall be specified.
+	pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  var pdfDoc = null,
+      pageNum = 1,
+      pageRendering = false,
+      pageNumPending = null,
+      scale = 0.8,
+      canvas = document.getElementById('the-canvas'),
+      ctx = canvas.getContext('2d');
+
+  /**
+   * Get page info from document, resize canvas accordingly, and render page.
+   * @param num Page number.
+   */
+  function renderPage(num) {
+    pageRendering = true;
+    // Using promise to fetch the page
+    pdfDoc.getPage(num).then(function(page) {
+      var viewport = page.getViewport({scale: scale});
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      // Render PDF page into canvas context
+      var renderContext = {
+        canvasContext: ctx,
+        viewport: viewport
+      };
+      var renderTask = page.render(renderContext);
+
+      // Wait for rendering to finish
+      renderTask.promise.then(function() {
+        pageRendering = false;
+        if (pageNumPending !== null) {
+          // New page rendering is pending
+          renderPage(pageNumPending);
+          pageNumPending = null;
+        }
+      });
+    });
+
+    // Update page counters
+    document.getElementById('page_num').textContent = num;
+  }
+
+  /**
+   * If another page rendering in progress, waits until the rendering is
+   * finised. Otherwise, executes rendering immediately.
+   */
+  function queueRenderPage(num) {
+    if (pageRendering) {
+      pageNumPending = num;
+    } else {
+      renderPage(num);
+    }
+  }
+
+  /**
+   * Displays previous page.
+   */
+  function onPrevPage() {
+    if (pageNum <= 1) {
+      return;
+    }
+    pageNum--;
+    queueRenderPage(pageNum);
+  }
+  document.getElementById('prev').addEventListener('click', onPrevPage);
+
+  /**
+   * Displays next page.
+   */
+  function onNextPage() {
+    if (pageNum >= pdfDoc.numPages) {
+      return;
+    }
+    pageNum++;
+    queueRenderPage(pageNum);
+  }
+  document.getElementById('next').addEventListener('click', onNextPage);
+
+  /**
+   * Asynchronously downloads PDF.
+   */
+  pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+    pdfDoc = pdfDoc_;
+    document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+    // Initial/first page rendering
+    renderPage(pageNum);
+  });
+</script>#}
+
+
+
+
+<script type="module">
+	// Loaded via <script> tag, create shortcut to access PDF.js exports.
+	var { pdfjsLib } = globalThis;
+
+	// The workerSrc property shall be specified.
+	pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+	//var url = '/static/uploads/facture-avoir.pdf';
+	var url = '/static/uploads/NASDAQ_ASLN_2019.pdf';
+  	
+  	
+	var pdfDoc = null,
+      pageNum = 1,
+      pageRendering = false,
+      pageNumPending = null,
+      scale = 1,
+      canvas = document.getElementById('the-canvas'),
+      ctx = canvas.getContext('2d');
+
+	let currentPage = 1;
+	/*const konvaContainer = document.getElementById('konva-container');
 	// const pageInfo = document.getElementById('page-info');
 
-	// const stage = new Konva.Stage({
-	// 	container: 'konva-container',
-	// 	width: 0,
-	// 	height: 0
-	// });
+	const stage = new Konva.Stage({
+		container: 'konva-container',
+		width: 0,
+		height: 0
+	});
 
-	// const layer = new Konva.Layer();
-	// stage.add(layer);
+	const layer = new Konva.Layer();
+	stage.add(layer);*/
 
-	// pdfjsLib.getDocument(url).promise.then(pdf => {
-	// 	pdfDoc = pdf;
-	// 	renderPage(currentPage);
-	// });
+	function renderPage(num) {
+		pdfDoc.getPage(num).then(page => {
+			const viewport = page.getViewport({ scale });
 
-	// function renderPage(num) {
-	// 	pdfDoc.getPage(num).then(page => {
-	// 		const viewport = page.getViewport({ scale });
+			// Resize canvas
+			canvas.height = viewport.height;
+			canvas.width = viewport.width;
 
-	// 		// Resize canvas
-	// 		canvas.height = viewport.height;
-	// 		canvas.width = viewport.width;
+			/*// Resize Konva overlay
+			konvaContainer.style.width = viewport.width + 'px';
+			konvaContainer.style.height = viewport.height + 'px';
+			stage.width(viewport.width);
+			stage.height(viewport.height);
 
-	// 		// Resize Konva overlay
-	// 		konvaContainer.style.width = viewport.width + 'px';
-	// 		konvaContainer.style.height = viewport.height + 'px';
-	// 		stage.width(viewport.width);
-	// 		stage.height(viewport.height);
+			// Clear Konva
+			layer.destroyChildren();*/
 
-	// 		// Clear Konva
-	// 		layer.destroyChildren();
+			// Render PDF page into canvas context
+			const renderContext = {
+				canvasContext: ctx,
+				viewport: viewport
+			};
+			var renderTask = page.render(renderContext);
 
-	// 		// Render PDF page into canvas context
-	// 		const renderContext = {
-	// 			canvasContext: ctx,
-	// 			viewport: viewport
-	// 		};
-	// 		page.render(renderContext).promise.then(() => {
-	// 			pageInfo.textContent = `Page ${num} / ${pdfDoc.numPages}`;
-	// 			// Sample BBox (you’ll replace this with real OCR data)
-	// 			const bbox = {
-	// 				x: 100,
-	// 				y: 150,
-	// 				width: 200,
-	// 				height: 50
-	// 			};
-	// 			const rect = new Konva.Rect({
-	// 				x: bbox.x,
-	// 				y: bbox.y,
-	// 				width: bbox.width,
-	// 				height: bbox.height,
-	// 				stroke: 'red',
-	// 				strokeWidth: 2
-	// 			});
-	// 			layer.add(rect);
-	// 			layer.draw();
-	// 		});
-	// 	});
-	// }
+			// Wait for rendering to finish
+			renderTask.promise.then(function() {
+				pageRendering = false;
+				if (pageNumPending !== null) {
+				// New page rendering is pending
+				renderPage(pageNumPending);
+					pageNumPending = null;
+				}
 
-	// document.getElementById('prev').addEventListener('click', () => {
-	// 	if (currentPage <= 1) return;
-	// 	currentPage--;
-	// 	renderPage(currentPage);
-	// });
+				/*// Fake bounding boxes (x, y, w, h) + extracted text
+				const boxes = [{
+					x: 50,
+					y: 80,
+					width: 120,
+					height: 30,
+					text: "Titre du document"
+				},
+				{
+					x: 60,
+					y: 130,
+					width: 300,
+					height: 25,
+					text: "Nom: Fatima Zahra Khaldi"
+				},
+				{
+					x: 60,
+					y: 170,
+					width: 300,
+					height: 25,
+					text: "Date: 21/05/2025"
+				}
+				];
 
-	// document.getElementById('next').addEventListener('click', () => {
-	// 	if (currentPage >= pdfDoc.numPages) return;
-	// 	currentPage++;
-	// 	renderPage(currentPage);
-	// });
+				boxes.forEach(b => {
+					const rect = new Konva.Rect({
+						x: b.x,
+						y: b.y,
+						width: b.width,
+						height: b.height,
+						stroke: 'blue',
+						strokeWidth: 2,
+						dash: [4, 2],
+						draggable: false
+					});
+
+					rect.on('mouseover', () => {
+						document.getElementById('preview-text').innerText = '📝 Texte : ' + b
+							.text;
+						rect.stroke('red');
+						layer.draw();
+					});
+
+					rect.on('mouseout', () => {
+						document.getElementById('preview-text').innerText =
+							'🖱️ Survolez une boîte pour voir le texte';
+						rect.stroke('blue');
+						layer.draw();
+					});
+
+					layer.add(rect);
+				});
+
+				//alert("rect")
+				layer.draw();*/
+			});
+
+			// Update page counters
+			document.getElementById('page_num').textContent = num;
+		});
+	}
+
+	/**
+	* If another page rendering in progress, waits until the rendering is
+	* finised. Otherwise, executes rendering immediately.
+	*/
+	function queueRenderPage(num) {
+		if (pageRendering) {
+		pageNumPending = num;
+		} else {
+		renderPage(num);
+		}
+	}
+
+	/**
+	* Displays previous page.
+	*/
+	function onPrevPage() {
+		if (pageNum <= 1) {
+		return;
+		}
+		pageNum--;
+		queueRenderPage(pageNum);
+	}
+	document.getElementById('prev').addEventListener('click', onPrevPage);
+
+	/**
+	* Displays next page.
+	*/
+	function onNextPage() {
+		if (pageNum >= pdfDoc.numPages) {
+		return;
+		}
+		pageNum++;
+		queueRenderPage(pageNum);
+	}
+	document.getElementById('next').addEventListener('click', onNextPage);
 
 
+	/**
+	* Asynchronously downloads PDF.
+	*/
+	pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+		pdfDoc = pdfDoc_;
+		document.getElementById('page_count').textContent = pdfDoc.numPages;
 
+		// Initial/first page rendering
+		renderPage(pageNum);
+	});
 
 	// Automatically start processing after page loads
 	document.addEventListener("DOMContentLoaded", () => {
@@ -304,8 +499,12 @@
 			});
 		});
 		layer.draw();*/
+		
+		
+		
+		
 		// START JAVASCRIPT
-		const imgURL =
+		/*const imgURL =
 			'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/512px-PDF_file_icon.svg.png';
 
 		// Fake bounding boxes (x, y, w, h) + extracted text
@@ -381,7 +580,7 @@
 			});
 
 			layer.draw();
-		});
+		});*/
 	});
 </script>
 {% endblock javascripts %}
